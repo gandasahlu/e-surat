@@ -1,9 +1,11 @@
 <?php
 require_once 'config.php';
 
+
 if (is_logged_in()) {
     redirect($_SESSION['user_role'] . '/dashboard.php');
 }
+
 
 $error = '';
 $role = 'penduduk'; // default role
@@ -88,11 +90,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             margin: 100px auto;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            background: white;
+            box-shadow: 0 0 20px rgba(243, 7, 7, 0.1);
+            background: yellow;
         }
         .role-selector .nav-link {
-            color: #495057;
+            color: #06509a;
             font-weight: 500;
         }
         .role-selector .nav-link.active {
@@ -214,6 +216,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="text-center">
                 <p class="mb-2">Belum punya akun?</p>
                 <p>Untuk penduduk baru, silahkan datang ke kantor desa untuk registrasi.</p>
+                <p>akun demo</p>
+                <p>penduduk nik:11111111111 pw:123456</p>
+                <P>username: admin pw: admin123</P>
+                <p>username:kepaladesa pw:kepala123</p>
+
+                
                 <a href="index.php" class="btn btn-outline-secondary">
                     <i class="bi bi-house"></i> Kembali ke Beranda
                 </a>

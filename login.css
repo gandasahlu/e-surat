@@ -1,0 +1,60 @@
+// script.js - tambahkan di bagian bawah sebelum </body>
+document.addEventListener('DOMContentLoaded', function() {
+    // Efek hover pada kartu login
+    const loginContainer = document.querySelector('.login-container');
+    
+    // Animasi untuk tab switching
+    const roleTabs = document.querySelectorAll('#roleTab button');
+    roleTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            // Reset semua tab
+            roleTabs.forEach(t => {
+                t.classList.remove('active');
+            });
+            
+            // Set tab aktif
+            this.classList.add('active');
+            
+            // Tambahkan efek visual
+            this.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
+        });
+    });
+    
+    // Efek fokus pada input
+    const formInputs = document.querySelectorAll('.form-control');
+    formInputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            this.parentElement.classList.add('focused');
+        });
+        
+        input.addEventListener('blur', function() {
+            if (!this.value) {
+                this.parentElement.classList.remove('focused');
+            }
+        });
+    });
+    
+    // Validasi form real-time
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const inputs = form.querySelectorAll('input[required]');
+        
+        inputs.forEach(input => {
+            input.addEventListener('input', function() {
+                const allFilled = Array.from(inputs).every(input => input.value.trim() !== '');
+                submitBtn.disabled = !allFilled;
+                
+                // Visual feedback
+                if (allFilled) {
+                    submitBtn.style.opacity = '1';
+                } else {
+                    submitBtn.style.opacity = '0.7';
+                }
+            });
+        });
+    });
+});
